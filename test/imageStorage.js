@@ -1,14 +1,14 @@
-const SimpleStorage = artifacts.require("./SimpleStorage.sol");
+const ImageStorage = artifacts.require("./ImageStorage.sol");
 
-contract("SimpleStorage", accounts => {
+contract("ImageStorage", accounts => {
   it("...should store the value 'Hello World'", async () => {
-    const simpleStorageInstance = await SimpleStorage.deployed();
+    const ImageStorageInstance = await ImageStorage.deployed();
 
-    // Set value of 89
-    await simpleStorageInstance.set("Hello World", { from: accounts[0] });
+    // Set value of images to Hello World
+    await ImageStorageInstance.set("Hello World", { from: accounts[0] });
 
     // Get stored value
-    const storedData = await simpleStorageInstance.get.call();
+    const storedData = await ImageStorageInstance.images.call(1);
 
     assert.equal(storedData, "Hello World", "The value Hello World was not stored.");
   });
